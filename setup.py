@@ -1,13 +1,12 @@
 import pathlib
-from setuptools import setup
 
-from kr import __version__
+from setuptools import setup
 
 README = (pathlib.Path(__file__).parent / "README.md").read_text()
 
 setup(
     name="kr-cli",
-    version=__version__,
+    version="0.0.1",
     description="CLI tool to search and download roms from Killers Roms",
     long_description=README,
     long_description_content_type="text/markdown",
