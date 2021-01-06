@@ -6,7 +6,7 @@ from tabulate import tabulate
 from .download import download, retrieve_file_url
 from .search import search, verify_console_name
 
-__version__ = "0.0.0"
+__version__ = "0.0.1"
 
 
 def validate_console(ctx, param, value):
