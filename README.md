@@ -1,4 +1,4 @@
-# Killer Roms CLI
+# Killers Roms CLI
 > CLI tool to search and download roms from [Killers Roms](kr-website).
 
 `kr-cli` allows to search and download roms published by [Killers Roms](kr-website) through command line interface.
