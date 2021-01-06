@@ -1,7 +1,7 @@
 # Killers Roms CLI
-> CLI tool to search and download roms from [Killers Roms](kr-website).
+> CLI tool to search and download roms from [Killers Roms][kr-website].
 
-`kr-cli` allows to search and download roms published by [Killers Roms](kr-website) through command line interface.
+`kr-cli` allows to search and download roms published by [Killers Roms][kr-website] through command line interface.
 
 ![Demo usage of kr-cli](demo.gif)
 
@@ -55,4 +55,4 @@ kr search genesis sonic -q | head -n 1 | kr download -d /tmp
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
 
-[kr-website](https://roms-download.com/)
+[kr-website]: https://roms-download.com/
