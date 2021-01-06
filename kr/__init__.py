@@ -2,7 +2,6 @@ import os
 
 import click
 from tabulate import tabulate
-from tqdm import tqdm
 
 from .download import download, retrieve_file_url
 from .search import search, verify_console_name
