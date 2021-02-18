@@ -3,7 +3,7 @@
 
 `kr-cli` allows to search and download roms published by [Killers Roms][kr-website] through command line interface.
 
-![Demo usage of kr-cli](demo.gif)
+![Demo usage of kr-cli][demo-gif]
 
 ## Installation
 
@@ -49,10 +49,12 @@ kr search genesis sonic -q | head -n 1 | kr download -d /tmp
 
 ## Contributing
 
-1. [Fork it](https://github.com/jonatasleon/kr-cli/fork)
+1. [Fork it][fork-it]
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
 
 [kr-website]: https://roms-download.com/
+[demo-gif]: https://raw.githubusercontent.com/jonatasleon/kr-cli/main/demo.gif
+[fork-it]: https://github.com/jonatasleon/kr-cli/fork
