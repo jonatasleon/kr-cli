@@ -3,6 +3,7 @@ import sys
 import requests
 from bs4 import BeautifulSoup
 
+from .config import BASE_URL
 from .consoles import consoles
 
 
@@ -19,7 +20,7 @@ def search(console_code, query, order_by="downloads", asc=False, page=0):
     order = f"{order_by}${'ASC' if asc else 'DESC'}"
 
     response = requests.post(
-        "https://roms-download.com/ajax.php?m=roms_j",
+        f"{BASE_URL}/ajax.php?m=roms_j",
         data={
             "sort": order,
             "page": page,
@@ -44,7 +45,7 @@ def parse_row(row):
         rating=columns[2].text.strip("\n"),
         downloads=columns[3].text.strip("\n"),
         size=columns[4].text.strip("\n"),
-        link=f"https://roms-download.com{columns[0].find('a')['href']}",
+        link=f"{BASE_URL}{columns[0].find('a')['href']}",
     )
 
     return parsed_row
