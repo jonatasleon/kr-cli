@@ -95,6 +95,7 @@ def _consoles():
     show_default=True,
 )
 def _search(console, query, quiet, order_by, ascending, page):
+    """Search roms."""
     for q in query:
         result = search(console, q, order_by=order_by, asc=ascending, page=page)
         if quiet:
@@ -110,6 +111,7 @@ def _search(console, query, quiet, order_by, ascending, page):
 )
 @click.option("--output_dir", "-d", default=os.path.abspath("."))
 def _download(urls, output_dir):
+    """Download roms."""
     for url in urls:
         file_url = retrieve_file_url(url)
         click.echo(file_url)
