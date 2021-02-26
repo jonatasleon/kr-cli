@@ -3,8 +3,11 @@ import os
 import click
 from tabulate import tabulate
 
+from kr.consoles import list_consoles
+
 from .download import download, retrieve_file_url
 from .search import search, verify_console_name
+
 
 def validate_console(ctx, param, value):
     try:
@@ -48,6 +51,12 @@ def validate_urls(ctx, param, value):
 @click.group()
 def cli():
     pass
+
+
+@cli.command("consoles")
+def _consoles():
+    """List available consoles to search and download from."""
+    click.echo("\n".join(list_consoles()))
 
 
 @cli.command("search")

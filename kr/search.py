@@ -3,17 +3,12 @@ import sys
 import requests
 from bs4 import BeautifulSoup
 
-console_mapper = {
-    "gba": 48,
-    "genesis": 98,
-    "n64": 75,
-    "snes": 110,
-}
+from .consoles import consoles
 
 
 def verify_console_name(console_name):
     try:
-        console_code = console_mapper[console_name]
+        console_code = consoles[console_name]
     except KeyError:
         raise KeyError(f"Console {console_name} is not available.")
 
