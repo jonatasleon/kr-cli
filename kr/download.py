@@ -23,6 +23,6 @@ def download(url, output_dir="/tmp", output_filename=None, chunk_size=1024):
 
 def retrieve_file_url(url):
     response = requests.get(url)
-    soup = BeautifulSoup(response.text, 'html.parser')
+    soup = BeautifulSoup(response.text, "html.parser")
     download_url = soup.select('a[itemprop="downloadUrl"]')[0]["href"]
     return download_url
