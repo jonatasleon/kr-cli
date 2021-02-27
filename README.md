@@ -13,21 +13,29 @@ pip install kr-cli
 
 ## Usage example
 
+### `consoles` command
+
+List available consoles
+
+```sh
+kr consoles
+```
+
 ### `search` command
 
 Basic usage
 ```sh
-kr search genesis sonic
+kr search sega-genesis sonic
 ```
 
 Ordering
 ```sh
-kr search genesis sonic --order-by title --asc
+kr search sega-genesis sonic --order-by title --asc
 ```
 
 Quiet mode shows only the link to rom's webpage
 ```sh
-kr search genesis sonic --quiet # or -q
+kr search sega-genesis sonic --quiet # or -q
 ```
 
 ### `download` command
@@ -39,12 +47,12 @@ kr download https://roms-download.com/roms/sega-genesis/sonic-knuckles-usa
 
 It's possible combine download with `search -q` command
 ```sh
-kr search genesis sonic -q | kr download
+kr search sega-genesis sonic -q | kr download
 ```
 
 Defining output directory
 ```sh
-kr search genesis sonic -q | head -n 1 | kr download -d /tmp
+kr search sega-genesis sonic -q | head -n 1 | kr download -d /tmp
 ```
 
 ## Contributing
