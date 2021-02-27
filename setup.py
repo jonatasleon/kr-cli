@@ -6,7 +6,7 @@ README = (pathlib.Path(__file__).parent / "README.md").read_text()
 
 setup(
     name="kr-cli",
-    version="0.0.2",
+    version="0.1.0",
     description="CLI tool to search and download roms from Killers Roms",
     long_description=README,
     long_description_content_type="text/markdown",
