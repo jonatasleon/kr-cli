@@ -47,6 +47,33 @@ def validate_urls(ctx, param, value):
     else:
         return value
 
+def aria_download(urls, output_dir):
+    dl_urls = []
+    for url in urls:
+        file_url = retrieve_file_url(url)
+        if file_url[-2:] == '7z' or file_url[-2:] == '7Z':
+            flag = click.prompt("File: " + file_url.split('/')[-1] + "\n7z detected! Press Z to include")
+            if flag == "Z" or flag == "z":
+                dl_urls.append(file_url)
+        else:
+            dl_urls.append(file_url)
+
+    if len(dl_urls) != 0:
+            click.echo("\nDownload Starting:")
+    for x in dl_urls:
+        click.echo(x.split('/')[-1])
+        arg = ["aria2c","-s16","-x16","--dir",".\\","-Z"]
+        arg.extend(dl_urls)
+        subprocess.run(arg)
+
+def defualt_download(urls, output_dir):
+    for url in urls:
+        file_url = retrieve_file_url(url)
+        click.echo(file_url)
+        chunks = download(file_url, output_dir=output_dir)
+        with click.progressbar(length=next(chunks)) as bar:
+            for size in chunks:
+                bar.update(size)
 
 @click.group()
 def cli():
@@ -112,10 +139,19 @@ def _search(console, query, quiet, order_by, ascending, page):
 @click.option("--output_dir", "-d", default=os.path.abspath("."))
 def _download(urls, output_dir):
     """Download roms."""
-    for url in urls:
-        file_url = retrieve_file_url(url)
-        click.echo(file_url)
-        chunks = download(file_url, output_dir=output_dir)
-        with click.progressbar(length=next(chunks)) as bar:
-            for size in chunks:
-                bar.update(size)
+    command = ["aria2c", "--version"]
+    try:
+        # Try to execute the command and capture the return code
+        result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+        if result.returncode == 0:
+            print("aria2c requirement is satisfied")
+            aria_download(urls, output_dir)
+        else:
+            print("aria2c is not installed")
+            defualt_download(urls, output_dir)
+    except subprocess.CalledProcessError:
+        print("aria2c is not installed")
+        defualt_download(urls, output_dir)
+    except FileNotFoundError:
+        print("aria2c is not installed")
+        defualt_download(urls, output_dir)
